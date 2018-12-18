@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
@@ -15,6 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.zjh.com.myapplication.R;
 import cn.zjh.com.myapplication.adapters.ImageAdapter;
+import cn.zjh.com.myapplication.adapters.ImageGrideAdapter;
 import cn.zjh.com.myapplication.beans.RecyclerViewBean;
 
 public class ActivityRecyclerView extends DemoBaseActivity {
@@ -23,6 +25,7 @@ public class ActivityRecyclerView extends DemoBaseActivity {
     RecyclerView mRecyclerView;
 
     private ImageAdapter imageAdapter;
+    private ImageGrideAdapter imageGrideAdapter;
     private ArrayList<RecyclerViewBean> data = new ArrayList<>();
 
     private final String names[] = {
@@ -45,7 +48,8 @@ public class ActivityRecyclerView extends DemoBaseActivity {
             "http://naturecanada.ca/wp-content/uploads/2014/07/Ruby-throat-Hummingbird-shutterstock_1953533.jpg",
             "http://images5.fanpop.com/image/photos/26100000/Hummingbird-hummingbirds-26167630-1024-740.jpg\n",
             "https://farm5.staticflickr.com/4065/4698051727_5024cd4e6c_b.jpg",
-            "http://mosthdwallpapers.com/wp-content/uploads/2016/06/Beautiful-Hummingbird-HD-Photography.jpg",
+            //可以加载gif格式图片
+            "http://p1.pstatp.com/large/166200019850062839d3",
     };
 
     @Override
@@ -69,10 +73,20 @@ public class ActivityRecyclerView extends DemoBaseActivity {
 
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        mRecyclerView.setLayoutManager(layoutManager);
+
+        StaggeredGridLayoutManager gridLayoutManager = new
+                StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+
+
+
+//        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setLayoutManager(gridLayoutManager);
 
         imageAdapter = new ImageAdapter(this,data);
-        mRecyclerView.setAdapter(imageAdapter);
+        imageGrideAdapter = new ImageGrideAdapter(this,data);
+
+//        mRecyclerView.setAdapter(imageAdapter);
+        mRecyclerView.setAdapter(imageGrideAdapter);
 
 
 

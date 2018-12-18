@@ -10,6 +10,15 @@ import java.io.Serializable;
 public class RecyclerViewBean implements Serializable {
     private String name;
     private String imgUrl;
+    private int type;
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     public RecyclerViewBean(){
         super();

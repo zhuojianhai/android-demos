@@ -20,13 +20,13 @@ import cn.zjh.com.myapplication.beans.RecyclerViewBean;
  * Created by zhuojh on 2018/12/18.
  */
 
-public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
+public class ImageGrideAdapter extends RecyclerView.Adapter<ImageGrideAdapter.ImageViewHolder> {
     private Context context;
     private ArrayList<RecyclerViewBean> data;
 
 
 
-    public ImageAdapter(Context context,ArrayList<RecyclerViewBean> data){
+    public ImageGrideAdapter(Context context, ArrayList<RecyclerViewBean> data){
         this.context = context;
         this.data = data;
     }
@@ -36,7 +36,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     @NonNull
     @Override
     public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_view_item,viewGroup,false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_view_grid_item,viewGroup,false);
         return new ImageViewHolder(view);
     }
 
