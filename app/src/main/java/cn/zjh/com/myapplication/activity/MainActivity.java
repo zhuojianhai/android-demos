@@ -33,7 +33,8 @@ public class MainActivity extends DemoBaseActivity
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,ActivityRecyclerView.class);
+//                Intent intent = new Intent(MainActivity.this,ActivityRecyclerView.class);
+                Intent intent = new Intent(MainActivity.this,FlexboxLayoutActivity.class);
                 startActivity(intent);
             }
         });

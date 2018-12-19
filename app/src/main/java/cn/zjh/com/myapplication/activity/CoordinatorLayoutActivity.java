@@ -1,15 +1,14 @@
 package cn.zjh.com.myapplication.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
@@ -22,15 +21,16 @@ import cn.zjh.com.myapplication.adapters.ImageAdapter;
 import cn.zjh.com.myapplication.adapters.ImageGrideAdapter;
 import cn.zjh.com.myapplication.beans.RecyclerViewBean;
 
-public class ActivityRecyclerView extends DemoBaseActivity {
+public class CoordinatorLayoutActivity extends DemoBaseActivity {
 
-    @BindView(R.id.mRecyclerView)
+    @BindView(R.id.coordinator_recycler_view)
     RecyclerView mRecyclerView;
 
-    private ImageAdapter imageAdapter;
-    private ImageGrideAdapter imageGrideAdapter;
-    private ArrayList<RecyclerViewBean> data = new ArrayList<>();
+    @BindView(R.id.tablayout)
+    TabLayout tabLayout;
 
+    private ImageAdapter imageAdapter;
+    private ArrayList<RecyclerViewBean> data = new ArrayList<>();
     private final String names[] = {
             "Eclair",
             "Froyo",
@@ -55,15 +55,25 @@ public class ActivityRecyclerView extends DemoBaseActivity {
             "http://p1.pstatp.com/large/166200019850062839d3",
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_activity_recycler_view);
+        setContentView(R.layout.activity_coordinator_layout);
         ButterKnife.bind(this);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.coordinator_toolbar);
+        setSupportActionBar(toolbar);
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
         initDatas();
-
     }
 
     private void initDatas() {
@@ -86,27 +96,26 @@ public class ActivityRecyclerView extends DemoBaseActivity {
         mRecyclerView.setLayoutManager(gridLayoutManager);
 
         imageAdapter = new ImageAdapter(this,data);
-        imageGrideAdapter = new ImageGrideAdapter(this,data);
 
-//        mRecyclerView.setAdapter(imageAdapter);
-        mRecyclerView.setAdapter(imageGrideAdapter);
+        mRecyclerView.setAdapter(imageAdapter);
 
         //为recyclerView 的Item 设置点击事件
-        imageGrideAdapter.setOnItemClickListener(new ImageGrideAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, RecyclerViewBean data) {
-                String name = data.getName();
-                if(!TextUtils.isEmpty(name) && name.equals("Eclair")){
-                    Intent intent = new Intent(ActivityRecyclerView.this,CoordinatorLayoutActivity.class);
-                    startActivity(intent);
-                }
-                Toast.makeText(ActivityRecyclerView.this, "点击-> "+ data.getName(), Toast.LENGTH_SHORT).show();
-            }
-        });
+//        imageGrideAdapter.setOnItemClickListener(new ImageGrideAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View view, RecyclerViewBean data) {
+//                Toast.makeText(ActivityRecyclerView.this, "点击-> "+ data.getName(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
+        tabLayout.addTab(tabLayout.newTab());
+        tabLayout.addTab(tabLayout.newTab());
+        tabLayout.addTab(tabLayout.newTab());
+        tabLayout.addTab(tabLayout.newTab());
 
-
-
+        tabLayout.getTabAt(0).setText("头条");
+        tabLayout.getTabAt(1).setText("热点");
+        tabLayout.getTabAt(2).setText("娱乐");
+        tabLayout.getTabAt(2).setText("美女");
     }
 
 }

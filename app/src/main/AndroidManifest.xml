@@ -23,10 +23,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.DemoBaseActivity"></activity>
+        <activity android:name=".activity.DemoBaseActivity" />
         <activity
             android:name=".activity.ActivityRecyclerView"
             android:label="@string/title_activity_recycler_view"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.FlexboxLayoutActivity"
+            android:label="@string/title_activity_flexbox_layout"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.CoordinatorLayoutActivity"
+            android:label="@string/title_activity_coordinator_layout"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

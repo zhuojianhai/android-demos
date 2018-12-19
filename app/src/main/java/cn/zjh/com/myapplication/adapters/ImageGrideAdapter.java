@@ -24,6 +24,28 @@ public class ImageGrideAdapter extends RecyclerView.Adapter<ImageGrideAdapter.Im
     private Context context;
     private ArrayList<RecyclerViewBean> data;
 
+    //点击 RecyclerView 某条的监听
+    public interface OnItemClickListener{
+
+        /**
+         * 当RecyclerView某个被点击的时候回调
+         * @param view 点击item的视图
+         * @param data 点击得到的数据
+         */
+        void onItemClick(View view, RecyclerViewBean data);
+
+    }
+
+    private OnItemClickListener onItemClickListener;
+
+    /**
+     * 设置RecyclerView某个的监听
+     * @param onItemClickListener
+     */
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        this.onItemClickListener = onItemClickListener;
+    }
+
 
 
     public ImageGrideAdapter(Context context, ArrayList<RecyclerViewBean> data){
@@ -45,6 +67,8 @@ public class ImageGrideAdapter extends RecyclerView.Adapter<ImageGrideAdapter.Im
         RecyclerViewBean item = data.get(position);
         imageViewHolder.textView.setText(item.getName());
         Glide.with(context).load(item.getImgUrl()).into(imageViewHolder.imageView);
+
+
     }
 
     @Override
@@ -52,7 +76,7 @@ public class ImageGrideAdapter extends RecyclerView.Adapter<ImageGrideAdapter.Im
         return data.size();
     }
 
-    public static class ImageViewHolder extends RecyclerView.ViewHolder{
+    public  class ImageViewHolder extends RecyclerView.ViewHolder{
 
      public    ImageView imageView;
      public    TextView textView;
@@ -61,6 +85,22 @@ public class ImageGrideAdapter extends RecyclerView.Adapter<ImageGrideAdapter.Im
             //适配器构造时只会用到实体类的get方法，用以获取相应的属性
             imageView = itemView.findViewById(R.id.recycler_image);
             textView = itemView.findViewById(R.id.recycler_img_name);
+
+            //添加点击事件
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(onItemClickListener != null){
+                        onItemClickListener.onItemClick(v, data.get(getLayoutPosition()));
+
+                    }
+
+                }
+            });
+
+
         }
     }
+
+
 }
