@@ -10,12 +10,75 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+    /**
+     * 针对debug 和relase两种构建体指定签名文件配置
+     *
+     */
+    signingConfigs{
+        debug{
+//            storeFile  file("buglytestreleasekey.jks")
+//            storePassword ""
+//            keyAlias ""
+//            keyPassword ""
+        }
+
+        release{
+            storeFile file("buglytestreleasekey.jks")
+            storePassword ""
+            keyAlias ""
+            keyPassword ""
         }
     }
+
+    buildTypes {
+        debug{
+            applicationIdSuffix ".debug"
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            minifyEnabled false
+//            signingConfig signingConfigs.debug
+        }
+
+        release {
+            minifyEnabled false
+//            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release
+        }
+
+    }
+
+    /*
+    * 将free 和paid  归结为 money维度
+    * 将小米，百度，归结为channel维度*/
+    flavorDimensions("money", "channel")
+
+    productFlavors{
+        //配置免费版本，包名在默认基础上后缀加上 .free，也就是 cn.zjh.com.myapplication.free
+        free{
+            dimension "money"
+            applicationIdSuffix ".free"
+        }
+
+        //配置收费版本，包名在默认基础上后缀加上 .pro  也就是cn.zjh.com.myapplication.pro
+        pro{
+            dimension "money"
+            applicationIdSuffix ".pro"
+        }
+
+        baidu {
+            manifestPlaceholders = [CHANNEL: "baidu"]
+            dimension "channel"
+        }
+
+        xiaomi {
+            manifestPlaceholders = [CHANNEL: "xiaomi"]
+            dimension "channel"
+        }
+
+
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -44,6 +107,16 @@ dependencies {
     //    ====glide 图片模块结束===
 
     implementation 'com.google.android:flexbox:0.1.2'
+
+    //loading 开源组件呢
+    implementation 'com.wang.avi:library:2.1.3'
+
+    //下拉放大组件  material  coordinarylayout 可实现这个效果
+    implementation 'com.github.frank-zhu:pullzoomview:1.0.0'
+
+    //圆形图片开源组件  material 也有circleImageView
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
 //    implementation 'com.google.android:flexbox:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
