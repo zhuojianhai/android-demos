@@ -97,6 +97,21 @@ public class BackEdittext extends EditText {
      * 如果点击的区域 大于删除图片的位置
      * @param event
      * @return
+     *
+     *
+     * 当手指抬起的位置在clean的图标的区域
+     * 我们将此视为进行清除操作
+     * getWidth():得到控件的宽度
+     * event.getX():抬起时的坐标(改坐标是相对于控件本身而言的)
+     * getTotalPaddingRight():clean的图标左边缘至控件右边缘的距离
+     * getPaddingRight():clean的图标右边缘至控件右边缘的距离
+     * 于是:
+     * getWidth() - getTotalPaddingRight()表示:
+     * 控件左边到clean的图标左边缘的区域
+     * getWidth() - getPaddingRight()表示:
+     * 控件左边到clean的图标右边缘的区域
+     * 所以这两者之间的区域刚好是clean的图标的区域
+     *
      */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
