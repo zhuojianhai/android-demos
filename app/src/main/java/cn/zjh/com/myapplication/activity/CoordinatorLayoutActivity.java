@@ -20,6 +20,7 @@ import cn.zjh.com.myapplication.R;
 import cn.zjh.com.myapplication.adapters.ImageAdapter;
 import cn.zjh.com.myapplication.adapters.ImageGrideAdapter;
 import cn.zjh.com.myapplication.beans.RecyclerViewBean;
+import cn.zjh.com.myapplication.views.BackEdittext;
 
 public class CoordinatorLayoutActivity extends DemoBaseActivity {
 
@@ -28,6 +29,9 @@ public class CoordinatorLayoutActivity extends DemoBaseActivity {
 
     @BindView(R.id.tablayout)
     TabLayout tabLayout;
+
+    @BindView(R.id.back_edittext)
+    BackEdittext backEdittext;
 
     private ImageAdapter imageAdapter;
     private ArrayList<RecyclerViewBean> data = new ArrayList<>();
@@ -92,8 +96,8 @@ public class CoordinatorLayoutActivity extends DemoBaseActivity {
 
 
 
-        mRecyclerView.setLayoutManager(layoutManager);
-//        mRecyclerView.setLayoutManager(gridLayoutManager);
+//        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setLayoutManager(gridLayoutManager);
 
         imageAdapter = new ImageAdapter(this,data);
 
@@ -116,6 +120,8 @@ public class CoordinatorLayoutActivity extends DemoBaseActivity {
         tabLayout.getTabAt(1).setText("热点");
         tabLayout.getTabAt(2).setText("娱乐");
         tabLayout.getTabAt(3).setText("美女");
+
+        backEdittext.initDrawable(R.drawable.ic_perm_phone_msg_black,R.drawable.ic_delete_forever_black_24dp);
     }
 
 }

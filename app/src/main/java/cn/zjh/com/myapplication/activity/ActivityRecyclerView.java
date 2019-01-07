@@ -1,15 +1,18 @@
 package cn.zjh.com.myapplication.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -22,10 +25,14 @@ import cn.zjh.com.myapplication.adapters.ImageAdapter;
 import cn.zjh.com.myapplication.adapters.ImageGrideAdapter;
 import cn.zjh.com.myapplication.beans.RecyclerViewBean;
 
-public class ActivityRecyclerView extends DemoBaseActivity {
+public class ActivityRecyclerView extends DemoBaseActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.mRecyclerView)
     RecyclerView mRecyclerView;
+
+    @BindView(R.id.myswipe)
+    SwipeRefreshLayout swipeRefreshLayout;
+
 
     private ImageAdapter imageAdapter;
     private ImageGrideAdapter imageGrideAdapter;
@@ -66,6 +73,7 @@ public class ActivityRecyclerView extends DemoBaseActivity {
 
     }
 
+    @SuppressLint("ResourceAsColor")
     private void initDatas() {
         for (int i = 0; i < names.length; ++i) {
             RecyclerViewBean recyclerViewBean = new RecyclerViewBean();
@@ -106,7 +114,19 @@ public class ActivityRecyclerView extends DemoBaseActivity {
 
 
 
-
+        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.setColorSchemeColors(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_red_light);
     }
 
+    @Override
+    public void onRefresh() {
+        Log.e(this.getClass().getSimpleName(),"onRefresh------");
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
 }
