@@ -92,8 +92,8 @@ public class CoordinatorLayoutActivity extends DemoBaseActivity {
 
 
 
-//        mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setLayoutManager(gridLayoutManager);
+        mRecyclerView.setLayoutManager(layoutManager);
+//        mRecyclerView.setLayoutManager(gridLayoutManager);
 
         imageAdapter = new ImageAdapter(this,data);
 
@@ -115,7 +115,7 @@ public class CoordinatorLayoutActivity extends DemoBaseActivity {
         tabLayout.getTabAt(0).setText("头条");
         tabLayout.getTabAt(1).setText("热点");
         tabLayout.getTabAt(2).setText("娱乐");
-        tabLayout.getTabAt(2).setText("美女");
+        tabLayout.getTabAt(3).setText("美女");
     }
 
 }

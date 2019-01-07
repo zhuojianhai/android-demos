@@ -8,4 +8,5 @@
     <string name="title_activity_recycler_view">ActivityRecyclerView</string>
     <string name="title_activity_flexbox_layout">FlexboxLayoutActivity</string>
     <string name="title_activity_coordinator_layout">CoordinatorLayoutActivity</string>
+    <string name="title_activity_nested_scroll">NestedScrollActivity</string>
 </resources>
