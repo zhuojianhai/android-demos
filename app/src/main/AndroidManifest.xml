@@ -41,6 +41,12 @@
             android:windowSoftInputMode="adjustPan"
             ></activity>
 
+        <!--
+        因为服务端的Service需要被客户端来远程绑定，所以客户端要能够找到这个Service，可以通过先指定包名，之后再配置Action值或者直接指定Service类名的方式来绑定Service
+如果是通过指定Action值的方式来绑定Service，那还需要将Service的声明改为如下所
+链接：https://www.jianshu.com/p/29999c1a93cd
+來源：简书
+        -->
 <service
     android:name=".services.AIDLService"
     android:enabled="true"
