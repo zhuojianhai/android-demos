@@ -40,8 +40,20 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan"
             ></activity>
+
+<service
+    android:name=".services.AIDLService"
+    android:enabled="true"
+    android:exported="true"
+    >
+    <intent-filter>
+        <action android:name="com.zjh.application.action"></action>
+        <category android:name="android.intent.category.DEFAULT"></category>
+    </intent-filter>
+
+</service>
     </application>
-    <meta-data
-        android:name="UMENG_CHANNEL"
-        android:value="${CHANNEL}" />
+    <!--<meta-data-->
+        <!--android:name="UMENG_CHANNEL"-->
+        <!--android:value="${CHANNEL}" />-->
 </manifest>
