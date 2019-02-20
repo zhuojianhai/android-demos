@@ -3,6 +3,8 @@ package cn.zjh.com.myapplication.activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Messenger;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -68,6 +70,8 @@ public class ActivityRecyclerView extends DemoBaseActivity implements SwipeRefre
         setContentView(R.layout.content_activity_recycler_view);
         ButterKnife.bind(this);
 
+//        Messenger ms = new Messenger(new Handler());
+//        ms.getBinder();
 
         initDatas();
 
