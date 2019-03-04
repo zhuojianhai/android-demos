@@ -23,11 +23,13 @@
             android:name=".activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".activity.DemoBaseActivity" />
         <activity
@@ -43,8 +45,41 @@
             android:label="@string/title_activity_coordinator_layout"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.ProcessButtonActivity"></activity>
-        <activity android:name=".activity.ImageSliderActivity"></activity>
+        <activity android:name=".activity.ProcessButtonActivity" />
+        <activity android:name=".activity.ImageSliderActivity" />
+        <activity android:name=".activity.itmapRegionDecoderActivity">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity android:name=".activity.AnimationActivity">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN"></action> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER"></category> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity android:name=".chapter3.activity.DemoActivity_1" />
+        <activity android:name=".chapter3.activity.DemoActivity_2" />
+        <activity android:name=".chapter3.activity.MainActivity">
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN"></action>-->
+
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity android:name=".chapter3.activity.TestActivity" />
+        <activity android:name=".chapter3.activity.ThirdActivity" />
+        <activity android:name=".activity.HandlerActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
