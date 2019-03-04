@@ -18,6 +18,7 @@ import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.zjh.com.myapplication.R;
 import cn.zjh.com.myapplication.views.MyDrawerLayout;
 
 

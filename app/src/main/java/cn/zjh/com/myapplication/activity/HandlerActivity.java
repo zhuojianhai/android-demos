@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import cn.zjh.com.myapplication.R;
+
 
 public class HandlerActivity extends AppCompatActivity {
     private static final String TAG = "HandlerActivity";
