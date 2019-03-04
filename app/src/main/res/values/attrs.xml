@@ -14,4 +14,9 @@
         <attr name="separatorColor" format="color" />
         <attr name="numColumns" format="integer" />
     </declare-styleable>
+
+    <declare-styleable name="MoveView">
+        <attr name="circle_color" format="color"></attr>
+    </declare-styleable>
 </resources>
+
